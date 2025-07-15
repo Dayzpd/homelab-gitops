@@ -12,12 +12,12 @@ spec:
         overlay: mgmt
   template:
     metadata:
-      name: "{{.overlay}}-cluster-api"
+      name: "{{overlay}}-cluster-api"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: "{{.overlay}}"
+      project: "{{overlay}}"
       ignoreDifferences: []
       syncPolicy:
         automated:
@@ -29,7 +29,7 @@ spec:
       source:
         repoURL: https://github.com/Dayzpd/kustomize-cluster-api
         targetRevision: HEAD
-        path: "overlays/{{.overlay}}"
+        path: "overlays/{{overlay}}"
       destination:
-        name: "{{.cluster}}"
+        name: "{{cluster}}"
         namespace: cluster-api
