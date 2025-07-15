@@ -10,7 +10,7 @@ spec:
   project: default
   source:
     path: apps/
-    repoURL: https://github.com/Dayzpd/homelab-apps
+    repoURL: https://github.com/Dayzpd/homelab-gitops
     targetRevision: HEAD
   destination:
     server: https://kubernetes.default.svc
