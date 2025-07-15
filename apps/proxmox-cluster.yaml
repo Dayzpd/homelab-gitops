@@ -12,7 +12,7 @@ spec:
         overlay: testlab
   template:
     metadata:
-      name: "cluster-{{.overlay}}"
+      name: "cluster-{{overlay}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
@@ -29,6 +29,6 @@ spec:
       source:
         repoURL: https://github.com/Dayzpd/kustomize-proxmox-cluster
         targetRevision: HEAD
-        path: "overlays/{{.overlay}}"
+        path: "overlays/{{overlay}}"
       destination:
-        name: "{{.cluster}}"
+        name: "{{cluster}}"
