@@ -16,12 +16,12 @@ spec:
         overlay: test
   template:
     metadata:
-      name: "{{.overlay}}-metallb"
+      name: "{{overlay}}-metallb"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: "{{.overlay}}"
+      project: "{{overlay}}"
       ignoreDifferences: []
       syncPolicy:
         automated:
@@ -33,7 +33,7 @@ spec:
       source:
         repoURL: https://github.com/Dayzpd/kustomize-metallb
         targetRevision: HEAD
-        path: "overlays/{{.overlay}}"
+        path: "overlays/{{overlay}}"
       destination:
-        name: "{{.cluster}}"
+        name: "{{cluster}}"
         namespace: metallb
