@@ -1,0 +1,7 @@
+.trash/
+pki/*
+**/*.env
+secrets/*.yaml
+secrets/*.json
+secrets/*.env
+env/
