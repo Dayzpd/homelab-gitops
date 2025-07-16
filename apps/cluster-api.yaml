@@ -38,9 +38,4 @@ spec:
       destination:
         name: "{{cluster}}"
         namespace: cluster-api
-      ignoreDifferences:
-      - group: rbac.authorization.k8s.io
-        kind: ClusterRole
-        name: capi-aggregated-manager-role
-        jqPathExpressions:
-          - rules
+      ignoreDifferences: []
