@@ -18,7 +18,6 @@ spec:
         - resources-finalizer.argocd.argoproj.io
     spec:
       project: "{{overlay}}"
-      ignoreDifferences: []
       syncPolicy:
         automated:
           prune: true
@@ -39,3 +38,9 @@ spec:
       destination:
         name: "{{cluster}}"
         namespace: cluster-api
+      ignoreDifferences:
+      - group: rbac.authorization.k8s.io
+        kind: ClusterRole
+        name: capi-aggregated-manager-role
+        jqPathExpressions:
+          - rules
