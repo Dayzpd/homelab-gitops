@@ -42,4 +42,4 @@ spec:
         path: "overlays/{{overlay}}"
       destination:
         name: "{{cluster}}"
-        namespace: metallb
+        namespace: metallb-system
