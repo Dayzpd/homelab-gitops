@@ -36,6 +36,7 @@ spec:
         syncOptions:
         - ApplyOutOfSyncOnly=true
         - ServerSideApply=true
+        - SkipDryRunOnMissingResource=true
       source:
         repoURL: https://github.com/Dayzpd/kustomize-cert-manager
         targetRevision: HEAD
