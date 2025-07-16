@@ -9,6 +9,8 @@ spec:
   - list:
       elements:
       - cluster: in-cluster
+        overlay: prodlab
+      - cluster: in-cluster
         overlay: testlab
   template:
     metadata:
