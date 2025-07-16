@@ -9,19 +9,37 @@ spec:
   - list:
       elements:
       - cluster: in-cluster
-        overlay: mgmt
+        project: mgmt
+        path: overlays/mgmt
+        suffix: "operator"
       - cluster: prodlab
-        overlay: prod
+        project: prod
+        suffix: "operator"
+        path: overlays/prod
       - cluster: testlab
-        overlay: test
+        project: test
+        suffix: "operator"
+        path: overlays/test
+      - cluster: in-cluster
+        project: mgmt
+        path: resources/mgmt
+        suffix: "config"
+      - cluster: prodlab
+        project: prod
+        path: resources/prod
+        suffix: "config"
+      - cluster: testlab
+        project: test
+        path: resources/test
+        suffix: "config"
   template:
     metadata:
-      name: "{{overlay}}-cert-manager"
+      name: "{{project}}-cert-manager-{{suffix}}"
       namespace: argocd
       finalizers:
         - resources-finalizer.argocd.argoproj.io
     spec:
-      project: "{{overlay}}"
+      project: "{{project}}"
       ignoreDifferences: []
       syncPolicy:
         automated:
@@ -40,7 +58,7 @@ spec:
       source:
         repoURL: https://github.com/Dayzpd/kustomize-cert-manager
         targetRevision: HEAD
-        path: "overlays/{{overlay}}"
+        path: "{{path}}"
       destination:
         name: "{{cluster}}"
         namespace: cert-manager
