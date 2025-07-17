@@ -1,0 +1,24 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mgmt-cluster-api
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: mgmt
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+      - ApplyOutOfSyncOnly=true
+      - ServerSideApply=true
+  source:
+    repoURL: https://github.com/Dayzpd/kustomize-cluster-api
+    targetRevision: HEAD
+    path: overlays/mgmt
+  destination:
+    name: in-cluster
+    namespace: cluster-api
+  ignoreDifferences: []
