@@ -1,0 +1,21 @@
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: mgmt-bootstrap
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: mgmt
+  source:
+    path: apps/mgmt
+    repoURL: https://github.com/Dayzpd/homelab-gitops
+    targetRevision: HEAD
+  destination:
+    server: in-cluster
+    namespace: argocd
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true

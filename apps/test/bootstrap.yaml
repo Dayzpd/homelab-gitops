@@ -2,26 +2,20 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap
+  name: test-bootstrap
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: default
+  project: test
   source:
-    path: apps/
+    path: apps/test
     repoURL: https://github.com/Dayzpd/homelab-gitops
     targetRevision: HEAD
   destination:
-    server: https://kubernetes.default.svc
+    server: in-cluster
     namespace: argocd
   syncPolicy:
     automated:
       prune: true
       selfHeal: true
-    retry:
-      limit: -1
-      backoff:
-        duration: 5s
-        factor: 2
-        maxDuration: 3m
