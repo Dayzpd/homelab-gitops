@@ -1,13 +1,12 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: mgmt-proxmox-cluster-testlab
+  name: test-proxmox-cluster
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
 spec:
-  project: mgmt
-  ignoreDifferences: []
+  project: test
   syncPolicy:
     automated:
       prune: true
@@ -21,3 +20,8 @@ spec:
     path: overlays/testlab
   destination:
     name: in-cluster
+  ignoreDifferences:
+  - group: cluster.x-k8s.io
+    kind: MachineDeployment
+    jsonPointers:
+      - /spec/selector/matchLabels

@@ -7,7 +7,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: prod
-  ignoreDifferences: []
   syncPolicy:
     automated:
       prune: true
@@ -21,3 +20,8 @@ spec:
     path: overlays/prodlab
   destination:
     name: in-cluster
+  ignoreDifferences:
+  - group: cluster.x-k8s.io
+    kind: MachineDeployment
+    jsonPointers:
+      - /spec/selector/matchLabels
