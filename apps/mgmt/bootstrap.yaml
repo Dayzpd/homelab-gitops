@@ -11,11 +11,11 @@ metadata:
 spec:
   project: mgmt
   source:
-    path: apps/mgmt
+    path: apps/mgmt/
     repoURL: https://github.com/Dayzpd/homelab-gitops
     targetRevision: HEAD
   destination:
-    server: in-cluster
+    name: in-cluster
     namespace: argocd
   syncPolicy:
     automated:
