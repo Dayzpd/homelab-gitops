@@ -9,7 +9,6 @@ metadata:
     argocd.argoproj.io/sync-wave: "-20"
 spec:
   project: prod
-  ignoreDifferences: []
   syncPolicy:
     automated:
       prune: true
