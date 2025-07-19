@@ -27,3 +27,9 @@ spec:
     name: istio-validator-istio-system
     jsonPointers:
       - /webhooks/0/failurePolicy
+  - group: apps
+    kind: DaemonSet
+    name: istio-cni-node
+    namespace: istio-system
+    jqPathExpressions:
+      - .spec.template.spec.containers.0.env[].valueFrom.resourceFieldRef.divisor
