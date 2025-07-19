@@ -32,4 +32,4 @@ spec:
     name: istio-cni-node
     namespace: istio-system
     jqPathExpressions:
-      - .spec.template.spec.containers.0.env[].valueFrom.resourceFieldRef.divisor
+      - .spec.template.spec.containers[0].env[].valueFrom.resourceFieldRef.divisor
