@@ -7,7 +7,6 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
 spec:
   project: test
-  ignoreDifferences: []
   syncPolicy:
     automated:
       prune: true
@@ -22,3 +21,9 @@ spec:
   destination:
     name: testlab
     namespace: istio-system
+  ignoreDifferences:
+  - group: admissionregistration.k8s.io
+    kind: ValidatingWebhookConfiguration
+    name: istio-validator-istio-system
+    jsonPointers:
+      - /webhooks/0/failurePolicy
